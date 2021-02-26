@@ -1,0 +1,128 @@
+.dashboard {
+    display: flex;
+    height: 100%;
+}
+
+.leftbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 80px;
+
+    background-color: #FFFFFF;
+
+    &-menu {
+        padding: 12px;
+
+        border-radius: 16px;
+
+        color: #343d46;
+
+        &:not(:last-of-type) {
+            margin-bottom: 48px;
+        }
+
+        &.active {
+            color: #343d46;
+        }
+    }
+}
+
+.body {
+    flex: 1;
+}
+
+.rightbar {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    text-align: left;
+
+    padding: 48px;
+    width: 400px;
+
+    color: #14142B;
+
+    .iconbar {
+        display: flex;
+        justify-content: flex-end;
+        margin: 0;
+        padding: 0;
+
+        margin-bottom: 36px;
+
+        li {
+            margin: 0 16px;
+        }
+    }
+    
+    .music_list {
+        flex: 1;
+        padding: 0;
+        margin: 0;
+        margin-top: 16px;
+
+        overflow-y: scroll;
+    
+        &-header {
+            display: flex;
+            justify-content: space-between;
+
+            .btn {
+                display: flex;
+                font-size: 14px;
+                align-items: center;
+                
+                color: #a7adba;
+
+                svg {
+                    margin-left: 4px;
+                }
+            }
+            
+            h3 {
+                margin: 0;
+            }
+            
+            button {
+                background: none;
+                outline: none;
+                border: none;
+
+            }
+        }
+
+        li {
+            background-color: white;
+            padding: 8px 12px;
+
+            border-left: 3px solid #a7adba;
+
+            &:first-of-type {
+                border-left: 3px solid #343d46;
+            }
+
+            p {
+                margin: 0px;
+                &.title {
+                    font-weight: bold;
+
+                    svg {
+                        color: #343d46;
+                        margin-right: 4px;
+                    }
+                }
+                &.subtitle {
+                    font-size: 12px;
+                    color: #a7adba;
+                }
+            }
+
+            &:not(:last-of-type) {
+                margin-bottom: 16px;
+            }
+        }
+    }
+}
