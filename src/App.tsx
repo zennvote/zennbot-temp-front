@@ -1,12 +1,15 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Dashboard from './page/Dashboard';
+import Broadcast from './page/Broadcast/Broadcast';
+import Dashboard from './page/Dashboard/Dashboard';
+import { Route } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <Dashboard />
+      <Route path="/" component={Dashboard} exact />
+      <Route path="/broadcast" component={Broadcast} exact />
     </div>
   );
 }
