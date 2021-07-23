@@ -8,7 +8,7 @@ import io from 'socket.io-client';
 
 import './Dashboard.scss';
 
-const socket = io.connect('localhost:4000', {
+const socket = io.connect('/socket', {
   transports: ['websocket'],
 });
 
@@ -25,7 +25,7 @@ const Dashboard = () => {
   }, []);
 
   const handleToggleFreemode = async (checked: boolean) => {
-    const { data: { value } } = await axios.post('http://zennbot-local.test:3000/songs/freemode', { value: checked })
+    const { data: { value } } = await axios.post('/api/songs/freemode', { value: checked })
 
     setFreemode(value);
   }
@@ -85,7 +85,7 @@ const Dashboard = () => {
 
         <div className="music_list-header">
           <h3>Musics</h3>
-          <span className="btn" onClick={() => axios.post('http://zennbot-local.test:3000/songs/next')}>
+          <span className="btn" onClick={() => axios.post('/api/songs/next')}>
             다음 곡
             <FiChevronsRight />
           </span>

@@ -4,7 +4,7 @@ import io from 'socket.io-client';
 
 import './Broadcast.scss';
 
-const socket = io.connect('localhost:4000', {
+const socket = io.connect('/socket', {
   transports: ['websocket'],
 });
 
