@@ -1,3 +1,5 @@
+@import '../../assets/_color.scss';
+
 .dashboard {
     display: flex;
     height: 100%;
@@ -11,39 +13,91 @@
 
     width: 80px;
 
-    background-color: #FFFFFF;
+    background-color: $grey-900;
 
     &-menu {
-        padding: 12px;
+        width: 100%;
+        margin: 0;
+        padding: 0;
 
-        border-radius: 16px;
+        li {
+            height: 30px;
+            margin-right: 16px;
+            border-radius: 0px 15px 15px 0px;
+            color: $color-default;
+            background-color: $color-default;
+            list-style: none;
 
-        color: #343d46;
+            svg {
+                vertical-align: bottom;
+                margin-bottom: -3px;
+            }
 
-        &:not(:last-of-type) {
-            margin-bottom: 48px;
-        }
-
-        &.active {
-            color: #343d46;
+            &:not(:last-of-type) {
+                margin-bottom: 48px;
+            }
+    
+            &.active {
+                color: $color-primary;
+            }
         }
     }
 }
 
 .body {
     flex: 1;
+    text-align: left;
+    padding: 32px;
+}
+h3 {
+    margin-block-end: 0.5em;
+}
+
+.manager-list {
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid $color-border;
+    border-bottom: 1px solid $color-border;
+
+    li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 6px;
+        &:not(:first-of-type) {
+            border-top: 1px solid $color-border;
+        }
+    }
+}
+
+
+.flag-list {
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid $color-border;
+    border-bottom: 1px solid $color-border;
+
+    li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 6px;
+        &:not(:first-of-type) {
+            border-top: 1px solid $color-border;
+        }
+    }
 }
 
 .rightbar {
     display: flex;
     flex-direction: column;
-    background-color: #FFFFFF;
+    background-color: $grey-900;
     text-align: left;
 
     padding: 48px;
     width: 400px;
 
-    color: #14142B;
+    color: $color-default;
 
     .iconbar {
         display: flex;
@@ -75,7 +129,7 @@
                 font-size: 14px;
                 align-items: center;
                 
-                color: #a7adba;
+                color: $color-text--secondary;
 
                 svg {
                     margin-left: 4px;
@@ -95,13 +149,12 @@
         }
 
         li {
-            background-color: white;
             padding: 8px 12px;
 
-            border-left: 3px solid #a7adba;
+            border-left: 3px solid $color-border;
 
             &:first-of-type {
-                border-left: 3px solid #343d46;
+                border-left: 3px solid $color-primary;
             }
 
             p {
@@ -110,13 +163,13 @@
                     font-weight: bold;
 
                     svg {
-                        color: #343d46;
-                        margin-right: 4px;
+                        color: $color-default;
+                        margin-right: 8px;
                     }
                 }
                 &.subtitle {
                     font-size: 12px;
-                    color: #a7adba;
+                    color: $grey-100;
                 }
             }
 

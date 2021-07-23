@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
-import { FiMusic, FiUser, FiAlertCircle, FiChevronsRight } from 'react-icons/fi'
+import { FiSettings, FiMinusCircle, FiMusic, FiUser, FiAlertCircle, FiChevronsRight } from 'react-icons/fi'
+import Switch from 'react-switch';
 
 import io from 'socket.io-client';
 
@@ -23,8 +24,8 @@ const Dashboard = () => {
     });
   }, []);
 
-  const handleClickFreemode = async () => {
-    const { data: { value } } = await axios.post('http://zennbot-local.test:3000/songs/freemode', { value: !freemode })
+  const handleToggleFreemode = async (checked: boolean) => {
+    const { data: { value } } = await axios.post('http://zennbot-local.test:3000/songs/freemode', { value: checked })
 
     setFreemode(value);
   }
@@ -32,12 +33,45 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <div className="leftbar">
-        <FiMusic className="leftbar-menu active" size="18" />
-        <FiMusic className="leftbar-menu" size="18" />
-        <FiMusic className="leftbar-menu" size="18" />
+        <ul className="leftbar-menu">
+          <li className="active">
+            <FiSettings size="18" />
+          </li>
+        </ul>
       </div>
       <div className="body">
+        <h2>환경설정</h2>
 
+        <h3>플래그 관리</h3>
+        <ul className="flag-list">
+          <li>
+            <span>신청곡 활성화</span>
+            <Switch onChange={() => {}} checked={false} />
+          </li>
+          <li>
+            <span>골든벨 활성화 (무료모드)</span>
+            <Switch onChange={handleToggleFreemode} checked={freemode} />
+          </li>
+        </ul>
+
+        <br />
+        <br />
+
+        <h3>매니저 관리</h3>
+        <ul className="manager-list">
+          <li>
+            <span>Test</span>
+            <FiMinusCircle size="18" />
+          </li>
+          <li>
+            <span>Test</span>
+            <FiMinusCircle size="18" />
+          </li>
+          <li>
+            <span>Test</span>
+            <FiMinusCircle size="18" />
+          </li>
+        </ul>
       </div>
       <div className="rightbar">
         <ul className="iconbar">
@@ -53,10 +87,6 @@ const Dashboard = () => {
           <h3>Musics</h3>
           <span className="btn" onClick={() => axios.post('http://zennbot-local.test:3000/songs/next')}>
             다음 곡
-            <FiChevronsRight />
-          </span>
-          <span className="btn" style={{ fontWeight: freemode ? 'bold' : 'normal' }} onClick={() => handleClickFreemode()}>
-            골든벨
             <FiChevronsRight />
           </span>
         </div>
