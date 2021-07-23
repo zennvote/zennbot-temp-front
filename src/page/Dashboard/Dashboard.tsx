@@ -9,7 +9,7 @@ import io from 'socket.io-client';
 import './Dashboard.scss';
 
 const socket = io.connect('/socket', {
-  transports: ['websocket'],
+  transports: ['polling'],
 });
 
 const Dashboard = () => {

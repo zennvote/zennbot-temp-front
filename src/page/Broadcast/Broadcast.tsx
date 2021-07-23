@@ -5,7 +5,7 @@ import io from 'socket.io-client';
 import './Broadcast.scss';
 
 const socket = io.connect('/socket', {
-  transports: ['websocket'],
+  transports: ['polling'],
 });
 
 const Broadcast = () => {
