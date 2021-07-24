@@ -4,25 +4,21 @@ import React, { useEffect, useState } from 'react';
 import { FiSettings, FiMinusCircle, FiMusic, FiUser, FiAlertCircle, FiChevronsRight } from 'react-icons/fi'
 import Switch from 'react-switch';
 
-import io from 'socket.io-client';
+import { useSocket } from '../../hooks/useSocket.hooks';
 
 import './Dashboard.scss';
-
-const socket = io.connect('http://zennbot.net', {
-  transports: ['websocket'],
-});
 
 const Dashboard = () => {
   const [songs, setSongs] = useState<any[]>([]);
   const [freemode, setFreemode] = useState<boolean>(false);
-  console.log(freemode);
+  const [socket] = useState(useSocket());
 
   useEffect(() => {
     socket.emit('songs.update');
     socket.on('songs.updated', (payload: any[]) => {
       setSongs(payload);
     });
-  }, []);
+  }, [socket]);
 
   const handleToggleFreemode = async (checked: boolean) => {
     const { data: { value } } = await axios.post('/api/songs/freemode', { value: checked })

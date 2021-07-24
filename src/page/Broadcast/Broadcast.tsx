@@ -1,22 +1,18 @@
 import React, { useEffect, useState } from 'react';
-
-import io from 'socket.io-client';
+import { useSocket } from '../../hooks/useSocket.hooks';
 
 import './Broadcast.scss';
 
-const socket = io.connect({
-  transports: ['websocket'],
-});
-
 const Broadcast = () => {
   const [songs, setSongs] = useState<any[]>([]);
+  const [socket] = useState(useSocket());
 
   useEffect(() => {
     socket.emit('songs.update');
     socket.on('songs.updated', (payload: any[]) => {
       setSongs(payload);
     });
-  }, []);
+  }, [socket]);
 
   return (
     <div className="broadcast">
