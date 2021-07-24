@@ -4,8 +4,8 @@ import io from 'socket.io-client';
 
 import './Broadcast.scss';
 
-const socket = io.connect('/socket', {
-  transports: ['polling'],
+const socket = io.connect({
+  transports: ['websocket'],
 });
 
 const Broadcast = () => {

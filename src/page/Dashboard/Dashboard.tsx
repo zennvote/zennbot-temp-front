@@ -8,8 +8,8 @@ import io from 'socket.io-client';
 
 import './Dashboard.scss';
 
-const socket = io.connect('/socket', {
-  transports: ['polling'],
+const socket = io.connect('http://zennbot.net', {
+  transports: ['websocket'],
 });
 
 const Dashboard = () => {
@@ -42,7 +42,7 @@ const Dashboard = () => {
       <div className="body">
         <h2>환경설정</h2>
 
-        <h3>플래그 관리</h3>
+        <h3>플래그 관리!!</h3>
         <ul className="flag-list">
           <li>
             <span>신청곡 활성화</span>
