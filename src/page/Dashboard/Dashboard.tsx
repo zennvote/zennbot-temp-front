@@ -14,6 +14,14 @@ const Dashboard = () => {
   const [socket] = useState(useSocket());
 
   useEffect(() => {
+    axios
+      .get('/api/flags')
+      .then(({ data }) => {
+        setFreemode(data.freemode ?? false);
+      });
+  }, []);
+
+  useEffect(() => {
     socket.emit('songs.update');
     socket.on('songs.updated', (payload: any[]) => {
       setSongs(payload);
@@ -21,9 +29,9 @@ const Dashboard = () => {
   }, [socket]);
 
   const handleToggleFreemode = async (checked: boolean) => {
-    const { data: { value } } = await axios.post('/api/songs/freemode', { value: checked })
+    await axios.post('/api/flags/freemode', { value: !!checked })
 
-    setFreemode(value);
+    setFreemode(checked);
   }
 
   return (
