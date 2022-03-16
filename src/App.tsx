@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Broadcast from './page/Broadcast/Broadcast';
 import Dashboard from './page/Dashboard/Dashboard';

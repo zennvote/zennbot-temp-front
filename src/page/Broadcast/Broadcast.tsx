@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useSocket } from '../../hooks/useSocket.hooks';
+import { useSongs } from '../Dashboard/hooks/useSongs';
 
 import './Broadcast.scss';
 
 const Broadcast = () => {
-  const [songs, setSongs] = useState<any[]>([]);
-  const [socket] = useState(useSocket());
+  const { songs } = useSongs();
 
-  useEffect(() => {
-    socket.emit('songs.update');
-    socket.on('songs.updated', (payload: any[]) => {
-      setSongs(payload);
-    });
-  }, [socket]);
+  if (!songs) {
+    return <div>Loading...</div>
+  }
 
   return (
     <div className="broadcast">

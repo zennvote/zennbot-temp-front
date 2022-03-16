@@ -4,35 +4,24 @@ import React, { useEffect, useState } from 'react';
 import { FiSettings, FiMinusCircle, FiMusic, FiUser, FiAlertCircle, FiChevronsRight } from 'react-icons/fi'
 import Switch from 'react-switch';
 
-import { useSocket } from '../../hooks/useSocket.hooks';
-
 import './Dashboard.scss';
+import { useFlags } from './hooks/useFlags';
+import { useManagers } from './hooks/useManagers';
+import { useSongs } from './hooks/useSongs';
 
 const Dashboard = () => {
-  const [songs, setSongs] = useState<any[]>([]);
-  const [freemode, setFreemode] = useState<boolean>(false);
-  const [socket] = useState(useSocket());
+  const [managerText, setManagerText] = useState<string>('');
 
-  useEffect(() => {
-    axios
-      .get('/api/flags')
-      .then(({ data }) => {
-        setFreemode(data.freemode ?? false);
-      });
-  }, []);
-
-  useEffect(() => {
-    socket.emit('songs.update');
-    socket.on('songs.updated', (payload: any[]) => {
-      setSongs(payload);
-    });
-  }, [socket]);
+  const { songs } = useSongs();
+  const { flags, update } = useFlags();
+  const { managers, create, remove } = useManagers();
 
   const handleToggleFreemode = async (checked: boolean) => {
-    await axios.post('/api/flags/freemode', { value: !!checked })
+    update('freemode', checked);
+  };
 
-    setFreemode(checked);
-  }
+  const handleClickCreateManager = () => create(managerText);
+  const handleClickRemoveManager = (username: string) => remove(username);
 
   return (
     <div className="dashboard">
@@ -54,7 +43,7 @@ const Dashboard = () => {
           </li>
           <li>
             <span>골든벨 활성화 (무료모드)</span>
-            <Switch onChange={handleToggleFreemode} checked={freemode} />
+            <Switch onChange={handleToggleFreemode} checked={flags?.freemode} />
           </li>
         </ul>
 
@@ -63,19 +52,19 @@ const Dashboard = () => {
 
         <h3>매니저 관리</h3>
         <ul className="manager-list">
-          <li>
-            <span>Test</span>
-            <FiMinusCircle size="18" />
-          </li>
-          <li>
-            <span>Test</span>
-            <FiMinusCircle size="18" />
-          </li>
-          <li>
-            <span>Test</span>
-            <FiMinusCircle size="18" />
-          </li>
+          {
+            managers && managers.map((manager: any) => (
+              <li>
+                <span>{ manager.username }</span>
+                <FiMinusCircle size="18" onClick={() => handleClickRemoveManager(manager.username)} />
+              </li>
+            ))
+          }
         </ul>
+        <div className="manager-form">
+          <input type="text" value={managerText} placeholder="트위치 아이디를 입력해주세요" onChange={({ target: { value } }) => setManagerText(value)} />
+          <button onClick={handleClickCreateManager}>생성</button>
+        </div>
       </div>
       <div className="rightbar">
         <ul className="iconbar">
@@ -95,7 +84,7 @@ const Dashboard = () => {
           </span>
         </div>
         <ul className="music_list">
-          {songs.map((item, index) => (
+          {songs && songs.map((item, index) => (
             <li key={index}>
               <p className="title">
                 {index === 0 && <FiMusic />}
