@@ -1,0 +1,10 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/zennbot-production/webapp
+    overwrite: yes
+hooks:
+  AfterInstall:
+    - location: execute-deploy.sh
+      timeout: 180
