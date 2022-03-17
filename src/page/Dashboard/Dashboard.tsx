@@ -20,8 +20,11 @@ const Dashboard = () => {
     update('freemode', checked);
   };
 
-  const handleClickCreateManager = () => create(managerText);
-  const handleClickRemoveManager = (username: string) => remove(username);
+  const handleClickCreateManager = () => {
+    create(managerText);
+    setManagerText('');
+  };
+  const handleClickRemoveManager = (twitchId: string) => remove(twitchId);
 
   return (
     <div className="dashboard">
@@ -55,8 +58,8 @@ const Dashboard = () => {
           {
             managers && managers.map((manager: any) => (
               <li>
-                <span>{ manager.username }</span>
-                <FiMinusCircle size="18" onClick={() => handleClickRemoveManager(manager.username)} />
+                <span>{ manager.twitchId }</span>
+                <FiMinusCircle size="18" onClick={() => handleClickRemoveManager(manager.twitchId)} />
               </li>
             ))
           }
