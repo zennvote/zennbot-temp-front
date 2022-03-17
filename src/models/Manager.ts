@@ -1,3 +1,3 @@
 export class Manager {
-  constructor(public username: string) {}
+  constructor(public twitchId: string) {}
 }
