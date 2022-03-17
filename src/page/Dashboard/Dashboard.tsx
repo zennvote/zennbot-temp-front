@@ -81,7 +81,7 @@ const Dashboard = () => {
 
         <div className="music_list-header">
           <h3>Musics</h3>
-          <span className="btn" onClick={() => axios.post('/api/songs/next')}>
+          <span className="btn" onClick={() => axios.post('/api/songs/skip')}>
             다음 곡
             <FiChevronsRight />
           </span>
