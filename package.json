@@ -25,10 +25,14 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "resolutions": {
+    "react-error-overlay": "6.0.9"
   },
   "eslintConfig": {
     "extends": [
@@ -50,6 +54,7 @@
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.1.7",
-    "@types/socket.io-client": "^1.4.35"
+    "@types/socket.io-client": "^1.4.35",
+    "react-error-overlay": "6.0.9"
   }
 }

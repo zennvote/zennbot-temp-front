@@ -4,7 +4,7 @@ import { Manager } from "../../../models/Manager";
 
 const baseURL = process.env.REACT_APP_API_URL;
 
-const fetcher = (key: string) => axios.get(key, { baseURL })
+const fetcher = (key: string) => axios.get(`${baseURL}${key}`, { baseURL })
   .then(res => res.data.map(({ twitchId }: any) => new Manager(twitchId)));
 
 export const useManagers = () => {

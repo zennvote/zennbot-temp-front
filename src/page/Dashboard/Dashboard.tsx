@@ -2,7 +2,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 import { FiSettings, FiMinusCircle, FiMusic, FiUser, FiAlertCircle, FiChevronsRight } from 'react-icons/fi'
+import { Redirect } from 'react-router-dom';
 import Switch from 'react-switch';
+import { useUser } from '../../hooks/useUser';
 
 import './Dashboard.scss';
 import { useFlags } from './hooks/useFlags';
@@ -10,6 +12,8 @@ import { useManagers } from './hooks/useManagers';
 import { useSongs } from './hooks/useSongs';
 
 const Dashboard = () => {
+  const { isLoading, isLoggedIn } = useUser();
+
   const [managerText, setManagerText] = useState<string>('');
 
   const { songs } = useSongs();
@@ -25,6 +29,14 @@ const Dashboard = () => {
     setManagerText('');
   };
   const handleClickRemoveManager = (twitchId: string) => remove(twitchId);
+
+  if (isLoading) {
+    return <div />
+  }
+  else if (!isLoggedIn) {
+    console.log(isLoggedIn);
+    return <Redirect to="/login" />;
+  }
 
   return (
     <div className="dashboard">
