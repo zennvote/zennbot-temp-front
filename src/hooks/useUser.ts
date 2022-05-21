@@ -48,5 +48,14 @@ export const useUser = () => {
     return data?.access_token;
   };
 
-  return { isLoading, isLoggedIn, login };
+  const register = async (username: string, password: string) => {
+    const { data } = await axios.post(`${process.env.REACT_APP_API_URL}/api/users`, {
+      username,
+      password,
+    }, { withCredentials: true });
+
+    return data;
+  }
+
+  return { isLoading, isLoggedIn, login, register };
 };

@@ -34,7 +34,6 @@ const Dashboard = () => {
     return <div />
   }
   else if (!isLoggedIn) {
-    console.log(isLoggedIn);
     return <Redirect to="/login" />;
   }
 

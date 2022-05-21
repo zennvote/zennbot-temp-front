@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useUser } from '../../hooks/useUser';
 
-import './Login.scss';
+import './Register.scss';
 
-const Login = () => {
+const Register = () => {
   const histroy = useHistory();
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { login } = useUser();
+  const [passwordValidate, setPasswordValidate] = useState('');
+  const { register } = useUser();
 
   const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(event.target.value);
@@ -19,38 +20,44 @@ const Login = () => {
     setPassword(event.target.value);
   };
 
-  const handleClickLoginButton = () => handleLogin();
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => e.key === 'Enter' && handleLogin();
+  const handlePasswordValidateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPasswordValidate(event.target.value);
+  };
 
-  const handleClickRegisterButton = () => histroy.push('/register');
+  const handleClickRegisterButton = () => handleRegister();
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => e.key === 'Enter' && handleRegister();
 
-  const handleLogin = async () => {
-    const result = await login(username, password);
+  const handleRegister = async () => {
+    const result = await register(username, password);
 
     if (!result) {
       setPassword('');
+      setPasswordValidate('');
     } else {
-      histroy.push('/');
+      histroy.push('/login');
     }
   };
 
   return (
     <div className="login">
-      <h1>Welcome!</h1>
+      <h1>회원가입</h1>
       <div className="form">
         <span>ID</span>
         <input autoFocus type="text" value={username} onChange={handleUsernameChange} />
       </div>
       <div className="form">
         <span>Password</span>
-        <input type="password" value={password} onChange={handlePasswordChange} onKeyPress={handleKeyPress} />
+        <input type="password" value={password} onChange={handlePasswordChange} />
+      </div>
+      <div className="form">
+        <span>Validate PW</span>
+        <input type="password" value={passwordValidate} onChange={handlePasswordValidateChange} onKeyPress={handleKeyPress} />
       </div>
       <div className="buttons">
-        <button onClick={handleClickLoginButton}>로그인</button>
         <button onClick={handleClickRegisterButton}>회원가입</button>
       </div>
     </div>
   )
 };
 
-export default Login;
+export default Register;
