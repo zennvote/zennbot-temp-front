@@ -14,7 +14,7 @@ const Dashboard = () => {
 
   const [managerText, setManagerText] = useState<string>('');
 
-  const { songs } = useSongs();
+  const { songs, resetCooltime } = useSongs();
   const { managers, create, remove } = useManagers();
 
   const handleClickCreateManager = () => {
@@ -22,6 +22,7 @@ const Dashboard = () => {
     setManagerText('');
   };
   const handleClickRemoveManager = (twitchId: string) => remove(twitchId);
+  const handleClickResetCooltime = () => resetCooltime();
 
   if (isLoading) {
     return <div />
@@ -39,6 +40,8 @@ const Dashboard = () => {
           </li>
         </ul>
       </div>
+
+
       <div className="body">
         <h2>환경설정</h2>
 
@@ -57,7 +60,15 @@ const Dashboard = () => {
           <input type="text" value={managerText} placeholder="트위치 아이디를 입력해주세요" onChange={({ target: { value } }) => setManagerText(value)} />
           <button onClick={handleClickCreateManager}>생성</button>
         </div>
+
+        <br />
+        <br />
+
+        <h3>신청곡 관리</h3>
+        <button className="primary" onClick={handleClickResetCooltime}>신청곡 쿨타임 초기화</button>
       </div>
+
+
       <div className="rightbar">
         <ul className="iconbar">
           <li>

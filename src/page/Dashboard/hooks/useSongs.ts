@@ -18,9 +18,14 @@ export const useSongs = () => {
     mutate(data.map((data) => new Song(data)));
   };
 
+  const resetCooltime = async () => {
+    await axios.delete(`${process.env.REACT_APP_API_URL}/api/songs/cooltimes`, { withCredentials: true });
+  };
+
   return {
     songs: data,
     isLoading: !error && !data,
     isError: error,
+    resetCooltime,
   }
 };
