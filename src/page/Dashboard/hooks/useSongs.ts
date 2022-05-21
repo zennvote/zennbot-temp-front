@@ -1,8 +1,9 @@
 import axios from "axios";
+import ReconnectingEventSource from "reconnecting-eventsource";
 import useSWR from "swr";
 import { Song, SongResponse } from "../../../models/Song";
 
-const eventSource = new EventSource(`${process.env.REACT_APP_API_URL}/api/songs/sse`);
+const eventSource = new ReconnectingEventSource(`${process.env.REACT_APP_API_URL}/api/songs/sse`);
 
 const baseURL = process.env.REACT_APP_API_URL;
 const fetcher = (key: string) => axios.get(key, { baseURL })

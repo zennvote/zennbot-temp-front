@@ -9844,6 +9844,11 @@ readdirp@~3.6.0:
   dependencies:
     picomatch "^2.2.1"
 
+reconnecting-eventsource@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/reconnecting-eventsource/-/reconnecting-eventsource-1.4.0.tgz#1eddd0cb761a527eba6abdfb271e7ba072e87d6d"
+  integrity sha512-sKLmf7so88LQO7XlfHlk0iHMqQboFIMMLlI58eY8QTTwigPA/rygP+pUVgPaCZSK5W60sTlw+u6TD9WmfW4Dpw==
+
 recursive-readdir@2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/recursive-readdir/-/recursive-readdir-2.2.2.tgz#9946fb3274e1628de6e36b2f6714953b4845094f"
