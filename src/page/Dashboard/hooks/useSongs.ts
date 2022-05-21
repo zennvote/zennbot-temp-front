@@ -22,10 +22,19 @@ export const useSongs = () => {
     await axios.delete(`${process.env.REACT_APP_API_URL}/api/songs/cooltimes`, { withCredentials: true });
   };
 
+  const create = async (title: string) => {
+    const { data } = await axios.post(`${process.env.REACT_APP_API_URL}/api/songs/${title}`, { withCredentials: true });
+
+    console.log(data);
+
+    return data;
+  };
+
   return {
     songs: data,
     isLoading: !error && !data,
     isError: error,
+    create,
     resetCooltime,
   }
 };

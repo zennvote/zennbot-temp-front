@@ -13,16 +13,22 @@ const Dashboard = () => {
   const { isLoading, isLoggedIn } = useUser();
 
   const [managerText, setManagerText] = useState<string>('');
+  const [customSongText, setCustomSongText] = useState<string>('');
 
-  const { songs, resetCooltime } = useSongs();
-  const { managers, create, remove } = useManagers();
+  const { songs, resetCooltime, create: createSong } = useSongs();
+  const { managers, create: createManager, remove } = useManagers();
 
   const handleClickCreateManager = () => {
-    create(managerText);
+    createManager(managerText);
     setManagerText('');
   };
   const handleClickRemoveManager = (twitchId: string) => remove(twitchId);
   const handleClickResetCooltime = () => resetCooltime();
+
+  const handleClickCreateCustomSong = () => {
+    createSong(customSongText);
+    setCustomSongText('');
+  };
 
   if (isLoading) {
     return <div />
@@ -65,7 +71,15 @@ const Dashboard = () => {
         <br />
 
         <h3>신청곡 관리</h3>
-        <button className="primary" onClick={handleClickResetCooltime}>신청곡 쿨타임 초기화</button>
+        <div className="song-buttons">
+          <button className="primary" onClick={handleClickResetCooltime}>신청곡 쿨타임 초기화</button>
+        </div>
+
+        <h3>임의 신청곡 추가</h3>
+        <div className="song-form">
+          <input type="text" value={customSongText} placeholder="추가할 노래 제목을 입력해주세요" onChange={({ target: { value } }) => setCustomSongText(value)} />
+          <button onClick={handleClickCreateCustomSong}>추가</button>
+        </div>
       </div>
 
 

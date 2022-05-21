@@ -99,21 +99,22 @@ button.primary {
     }
 }
 
+.song-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.song-form {
+    display: flex;
+    gap: 16px;
+    margin-top: 1rem;
 
-.flag-list {
-    margin: 0;
-    padding: 0;
-    border-top: 1px solid $color-border;
-    border-bottom: 1px solid $color-border;
-
-    li {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 12px 6px;
-        &:not(:first-of-type) {
-            border-top: 1px solid $color-border;
-        }
+    input {
+        flex: 1;
+        padding: 4px;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid $color-border;
     }
 }
 
