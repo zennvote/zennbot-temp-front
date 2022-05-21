@@ -13,7 +13,6 @@ export const useSongs = () => {
 
   eventSource.onmessage = (event) => {
     const data: SongResponse[] = JSON.parse(event.data);
-    console.log(event, data);
 
     mutate(data.map((data) => new Song(data)));
   };
@@ -25,16 +24,21 @@ export const useSongs = () => {
   const create = async (title: string) => {
     const { data } = await axios.post(`${process.env.REACT_APP_API_URL}/api/songs/${title}`, { withCredentials: true });
 
-    console.log(data);
-
     return data;
   };
+
+  const remove = async (index: number, isRefund = false) => {
+    const { data } = await axios.delete(`${process.env.REACT_APP_API_URL}/api/songs/${index}?${isRefund ? 'refund' : ''}`, { withCredentials: true });
+
+    return data;
+  }
 
   return {
     songs: data,
     isLoading: !error && !data,
     isError: error,
     create,
+    remove,
     resetCooltime,
   }
 };

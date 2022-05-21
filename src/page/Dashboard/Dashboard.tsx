@@ -1,10 +1,12 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { Item, Menu, theme, useContextMenu } from 'react-contexify';
 
 import { FiSettings, FiMinusCircle, FiMusic, FiUser, FiAlertCircle, FiChevronsRight } from 'react-icons/fi'
 import { Redirect } from 'react-router-dom';
 import { useUser } from '../../hooks/useUser';
 
+import "react-contexify/dist/ReactContexify.css";
 import './Dashboard.scss';
 import { useManagers } from './hooks/useManagers';
 import { useSongs } from './hooks/useSongs';
@@ -15,8 +17,12 @@ const Dashboard = () => {
   const [managerText, setManagerText] = useState<string>('');
   const [customSongText, setCustomSongText] = useState<string>('');
 
-  const { songs, resetCooltime, create: createSong } = useSongs();
+  const { songs, resetCooltime, create: createSong, remove: deleleSong } = useSongs();
   const { managers, create: createManager, remove } = useManagers();
+
+  const { show: showContextMenu } = useContextMenu({
+    id: 'songs-item',
+  });
 
   const handleClickCreateManager = () => {
     createManager(managerText);
@@ -29,6 +35,19 @@ const Dashboard = () => {
     createSong(customSongText);
     setCustomSongText('');
   };
+
+  const handleSongContextMenu = (e: React.MouseEvent) => {
+    showContextMenu(e, { props: { index: Number(e.currentTarget.id) } })
+  }
+
+  const handleClickSongDelete = (indexStr: string) => {
+    const index = parseInt(indexStr, 10);
+    deleleSong(index);
+  }
+  const handleClickSongRefund = (indexStr: string) => {
+    const index = parseInt(indexStr, 10);
+    deleleSong(index, true);
+  }
 
   if (isLoading) {
     return <div />
@@ -102,7 +121,7 @@ const Dashboard = () => {
         </div>
         <ul className="music_list">
           {songs && songs.map((item, index) => (
-            <li key={index}>
+            <li id={`${index}`} key={index} onContextMenu={handleSongContextMenu}>
               <p className="title">
                 {index === 0 && <FiMusic />}
                 {item.title}
@@ -112,6 +131,15 @@ const Dashboard = () => {
           ))}
         </ul>
       </div>
+
+      <Menu id='songs-item' theme={theme.light}>
+        <Item onClick={({ props: { index } }) => handleClickSongDelete(index)}>
+          삭제
+        </Item>
+        <Item onClick={({ props: { index } }) => handleClickSongRefund(index)}>
+          환불
+        </Item>
+      </Menu>
     </div>
   );
 };
