@@ -1,13 +1,11 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { FiSettings, FiMinusCircle, FiMusic, FiUser, FiAlertCircle, FiChevronsRight } from 'react-icons/fi'
 import { Redirect } from 'react-router-dom';
-import Switch from 'react-switch';
 import { useUser } from '../../hooks/useUser';
 
 import './Dashboard.scss';
-import { useFlags } from './hooks/useFlags';
 import { useManagers } from './hooks/useManagers';
 import { useSongs } from './hooks/useSongs';
 
@@ -17,12 +15,7 @@ const Dashboard = () => {
   const [managerText, setManagerText] = useState<string>('');
 
   const { songs } = useSongs();
-  const { flags, update } = useFlags();
   const { managers, create, remove } = useManagers();
-
-  const handleToggleFreemode = async (checked: boolean) => {
-    update('freemode', checked);
-  };
 
   const handleClickCreateManager = () => {
     create(managerText);
@@ -48,21 +41,6 @@ const Dashboard = () => {
       </div>
       <div className="body">
         <h2>환경설정</h2>
-
-        <h3>플래그 관리!!</h3>
-        <ul className="flag-list">
-          <li>
-            <span>신청곡 활성화</span>
-            <Switch onChange={() => {}} checked={false} />
-          </li>
-          <li>
-            <span>골든벨 활성화 (무료모드)</span>
-            <Switch onChange={handleToggleFreemode} checked={flags?.freemode} />
-          </li>
-        </ul>
-
-        <br />
-        <br />
 
         <h3>매니저 관리</h3>
         <ul className="manager-list">
