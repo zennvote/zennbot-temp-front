@@ -1,0 +1,39 @@
+@import '../../assets/color';
+
+.dashboard-root {
+  display: flex;
+  height: 100vh;
+  max-height: 100vh;
+  background-color: $color-background;
+
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+
+    width: 270px;
+    padding: 50px 30px;
+
+    text-align: center;
+  }
+
+  .content {
+    padding: 50px 40px;
+    min-height: 100%;
+
+    background-color: $color-white;
+    border-radius: 40px 40px 0 0;
+
+    &-wrap {
+      flex: 1;
+      padding-top: 50px;
+
+      height: 100vh;
+      max-height: 100vh;
+      overflow-y: auto;
+    }
+  }
+
+  .playlist {
+    width: 360px;
+  }
+}
