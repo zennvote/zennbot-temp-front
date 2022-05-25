@@ -14,8 +14,8 @@ const Broadcast = () => {
     <div className="broadcast">
       <h3>현재 {songs.length}개의 곡이 신청되었습니다.</h3>
       <ul>
-        { songs.map((song) => (
-          <li key={`${song.title}-${song.requestor}`}>
+        { songs.map((song, index) => (
+          <li key={index}>
             <h1>{ song.title }</h1>
             <p>{ song.requestorName }</p>
           </li>
