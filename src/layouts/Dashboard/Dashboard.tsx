@@ -13,7 +13,7 @@ export const Dashboard: FC = ({ children }) => {
 
       <div className="content-wrap">
         <div className="content">
-          Content
+          { children }
         </div>
       </div>
 

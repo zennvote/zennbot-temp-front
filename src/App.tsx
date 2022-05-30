@@ -9,7 +9,13 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route path="/dashboard" component={Dashboard} exact />
+        <Route path="/dashboard">
+          <Dashboard>
+            <Switch>
+              <Route path="/dashboard/songs">Test</Route>
+            </Switch>
+          </Dashboard>
+        </Route>
         <Route path='*' component={NotFound} />
       </Switch>
     </div>
