@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import { Sidebar } from './components/Sidebar';
 
-import './Dashboard.scss';
+import './Dashboard.scoped.scss';
 
 export const Dashboard: FC = ({ children }) => {
   return (

@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 import LogoImage from '../../../assets/logo.png';
 
-import './Sidebar.scss';
+import './Sidebar.scoped.scss';
 
 export const Sidebar: FC = () => {
   return (
