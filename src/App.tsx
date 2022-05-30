@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 import './App.css';
 import { Dashboard } from './layouts/Dashboard/Dashboard';
@@ -12,7 +12,15 @@ function App() {
         <Route path="/dashboard">
           <Dashboard>
             <Switch>
-              <Route path="/dashboard/songs">Test</Route>
+              <Route path="/dashboard" exact>
+                <Redirect to='/dashboard/songs' />
+              </Route>
+              <Route path="/dashboard/songs">Songs Page</Route>
+              <Route path="/dashboard/managers">Managers Page</Route>
+              <Route path="/dashboard/settings">Settings Page</Route>
+              <Route path='*'>
+                <Redirect to='/not-found' />
+              </Route>
             </Switch>
           </Dashboard>
         </Route>

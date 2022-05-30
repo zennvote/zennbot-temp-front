@@ -11,7 +11,7 @@
   flex-direction: column;
   gap: 26px;
 
-  button {
+  a {
     display: flex;
     gap: 14px;
 
@@ -24,12 +24,18 @@
     outline: none;
     border: none;
 
+    color: $color-black;
     text-align: left;
+    text-decoration: none;
     font-family: 'Spoqa Han Sans Neo';
     font-weight: bold;
     font-size: 16px;
 
     cursor: pointer;
+
+    span {
+      margin-top: 2px;
+    }
 
     &.active {
       background-color: $color-black;
