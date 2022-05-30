@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import './App.css';
+import { handleRefreshToken } from './hooks/useAuth';
 import { Dashboard } from './layouts/Dashboard/Dashboard';
 import { Login } from './pages/login/Login';
 import { NotFound } from './pages/NotFound/NotFound';
 
 function App() {
+  useEffect(() => {
+    handleRefreshToken();
+  }, []);
+
   return (
     <div className="App">
       <Switch>

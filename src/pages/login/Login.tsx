@@ -1,11 +1,27 @@
-import { FC } from "react";
-import { NavLink } from "react-router-dom";
+import { FC, useState } from "react";
+import { NavLink, useHistory } from "react-router-dom";
 
 import LogoImage from '../../assets/logo.png';
+import { login } from "../../hooks/useAuth";
 
 import './Login.scoped.scss';
 
 export const Login: FC = () => {
+  const history = useHistory();
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async () => {
+    try {
+      await login(username, password);
+      history.push('/dashboard');
+    } catch {
+      setPassword('');
+    }
+    
+  }
+
   return (
     <div className="root">
       <div className="wrapper">
@@ -18,10 +34,10 @@ export const Login: FC = () => {
           <div className="anchor">
             <div className="triangle" />
           </div>
-          <div className="fields">
-            <input type="text" placeholder="아이디" />
-            <input type="password" placeholder="비밀번호" />
-            <button>로그인</button>
+          <div className="fields" onKeyDown={(e) => e.key === 'Enter' && handleLogin()}>
+            <input value={username} onChange={(e) => setUsername(e.target.value)} type="text" placeholder="아이디" />
+            <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="비밀번호" />
+            <button onClick={handleLogin}>로그인</button>
           </div>
         </div>
       </div>
