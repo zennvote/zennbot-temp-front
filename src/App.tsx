@@ -3,6 +3,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 
 import './App.css';
 import { Dashboard } from './layouts/Dashboard/Dashboard';
+import { Login } from './pages/login/Login';
 import { NotFound } from './pages/NotFound/NotFound';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             </Switch>
           </Dashboard>
         </Route>
+        <Route path='/login' component={Login} exact />
         <Route path='*' component={NotFound} />
       </Switch>
     </div>
