@@ -1,31 +1,31 @@
+import axios from "axios";
+import { useEffect } from "react";
+import ReconnectingEventSource from "reconnecting-eventsource";
 import { atom, useRecoilState } from "recoil";
-import { RequestType, Song } from "src/models/Song";
+import { Song, SongResponse } from "src/models/Song";
 
-const defaultSongs = [
-  new Song({
-    title: "일루미네이트 콘서트",
-    requestor: "qjfrntop",
-    requestorName: "시프트",
-    requestType: RequestType.ticket,
-  }),
-  new Song({
-    title: "イルミネイトコンサート",
-    requestor: "qjfrntop",
-    requestorName: "프로듀서_젠",
-    requestType: RequestType.ticket,
-  }),
-  new Song({
-    title: "Daybreak Age",
-    requestor: "qjfrntop",
-    requestorName: "시프트",
-    requestType: RequestType.ticket,
-  }),
-];
+const songsState = atom<Song[]>({ key: "songs", default: [] });
+const songsEventSource = new ReconnectingEventSource(`${process.env.REACT_APP_API_URL}/songs/sse`);
 
-const songsState = atom({ key: "songs", default: defaultSongs });
+const fetchSong = async () => {
+  const response = await axios.get('songs');
+  const data: SongResponse[] = response.data;
+
+  return data.map((data) => new Song(data));
+};
 
 export const useSongs = () => {
   const [songs, setSongs] = useRecoilState(songsState);
+
+  useEffect(() => {
+    fetchSong().then((songs) => setSongs(songs));
+  }, [setSongs]);
+  
+  songsEventSource.onmessage = (event) => {
+    const data: SongResponse[] = JSON.parse(event.data);
+
+    setSongs(data.map((data) => new Song(data)));
+  };
 
   return {
     songs,
