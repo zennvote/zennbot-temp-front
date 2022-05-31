@@ -7,13 +7,6 @@ import { Song, SongResponse } from "src/models/Song";
 const songsState = atom<Song[]>({ key: "songs", default: [] });
 const songsEventSource = new ReconnectingEventSource(`${process.env.REACT_APP_API_URL}/songs/sse`);
 
-const fetchSong = async () => {
-  const response = await axios.get('songs');
-  const data: SongResponse[] = response.data;
-
-  return data.map((data) => new Song(data));
-};
-
 export const useSongs = () => {
   const [songs, setSongs] = useRecoilState(songsState);
 
@@ -27,7 +20,21 @@ export const useSongs = () => {
     setSongs(data.map((data) => new Song(data)));
   };
 
+  const fetchSong = async () => {
+    const response = await axios.get('songs');
+    const data: SongResponse[] = response.data;
+
+    return data.map((data) => new Song(data));
+  };
+
+  const addSong = async (title: string) => {
+    const response = await axios.post(`songs/${title}`);
+
+    return new Song(response.data);
+  }
+
   return {
     songs,
+    addSong,
   };
 };
