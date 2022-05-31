@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { Playlist } from './components/Playlist/Playlist';
 
 import { Sidebar } from './components/Sidebar/Sidebar';
 
@@ -17,7 +18,9 @@ export const Dashboard: FC = ({ children }) => {
         </div>
       </div>
 
-      <div className="playlist"></div>
+      <div className="playlist">
+        <Playlist />
+      </div>
     </div>
   );
 };
