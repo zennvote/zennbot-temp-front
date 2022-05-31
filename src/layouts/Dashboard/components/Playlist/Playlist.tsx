@@ -1,37 +1,30 @@
 import React, { FC } from "react";
 
 import { Music } from 'react-feather';
+import { useSongs } from "src/hooks/useSongs";
 
 import './Playlist.scoped.scss';
 
 export const Playlist: FC = () => {
+  const { songs } = useSongs();
+
   return (
     <div className="root">
       <h2>Playlist</h2>
       <ul>
-        <li>
-          <div className="index">
-            <Music size={14} />
-          </div>
-          <div className="body">
-            <span className="title">일루미네이트 콘서트</span>
-            <span className="requestor">시프트</span>
-          </div>
-        </li>
-        <li>
-          <div className="index">2</div>
-          <div className="body">
-            <span className="title">イルミネイトコンサート</span>
-            <span className="requestor">프로듀서_젠</span>
-          </div>
-        </li>
-        <li>
-          <div className="index">3</div>
-          <div className="body">
-            <span className="title">Daybreak Age</span>
-            <span className="requestor">시프트</span>
-          </div>
-        </li>
+        {
+          songs.map((song, index) => (
+            <li key={index}>
+              <div className="index">
+                { index === 0 ? <Music size={14} /> : index + 1 }
+              </div>
+              <div className="body">
+                <span className="title">{ song.title }</span>
+                <span className="requestor">{ song.requestorName }</span>
+              </div>
+            </li>
+          ))
+        }
       </ul>
     </div>
   );
