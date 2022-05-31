@@ -2,14 +2,17 @@ import React, { useEffect } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import './App.css';
-import { handleRefreshToken } from './hooks/useAuth';
+import { useAuth } from './hooks/useAuth';
 import { Dashboard } from './layouts/Dashboard/Dashboard';
 import { Login } from './pages/login/Login';
 import { NotFound } from './pages/NotFound/NotFound';
 
 function App() {
+  const { isLoggedIn, isLoggingIn, handleRefreshToken } = useAuth();
+
   useEffect(() => {
     handleRefreshToken();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -18,6 +21,13 @@ function App() {
         <Route path="/dashboard">
           <Dashboard>
             <Switch>
+              {
+                !isLoggingIn && !isLoggedIn && (
+                  <Route path='*'>
+                    <Redirect to='/login' />
+                  </Route>
+                )
+              }
               <Route path="/dashboard" exact>
                 <Redirect to='/dashboard/songs' />
               </Route>
