@@ -1,20 +1,48 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
-
-import Broadcast from './page/Broadcast/Broadcast';
-import Dashboard from './page/Dashboard/Dashboard';
-import Login from './page/Login/Login';
+import React, { useEffect } from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 import './App.css';
-import Register from './page/Register/Register';
+import { useAuth } from './hooks/useAuth';
+import { Dashboard } from './layouts/Dashboard/Dashboard';
+import { Login } from './pages/login/Login';
+import { NotFound } from './pages/NotFound/NotFound';
 
 function App() {
+  const { isLoggedIn, isLoggingIn, handleRefreshToken } = useAuth();
+
+  useEffect(() => {
+    handleRefreshToken();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="App">
-      <Route path="/" component={Dashboard} exact />
-      <Route path="/login" component={Login} exact />
-      <Route path="/register" component={Register} exact />
-      <Route path="/broadcast" component={Broadcast} exact />
+      <Switch>
+        <Route path="/dashboard">
+          <Dashboard>
+            <Switch>
+              {
+                !isLoggingIn && !isLoggedIn && (
+                  <Route path='*'>
+                    <Redirect to='/login' />
+                  </Route>
+                )
+              }
+              <Route path="/dashboard" exact>
+                <Redirect to='/dashboard/songs' />
+              </Route>
+              <Route path="/dashboard/songs">Songs Page</Route>
+              <Route path="/dashboard/managers">Managers Page</Route>
+              <Route path="/dashboard/settings">Settings Page</Route>
+              <Route path='*'>
+                <Redirect to='/not-found' />
+              </Route>
+            </Switch>
+          </Dashboard>
+        </Route>
+        <Route path='/login' component={Login} exact />
+        <Route path='*' component={NotFound} />
+      </Switch>
     </div>
   );
 }

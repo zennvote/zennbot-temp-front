@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.4.3",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -11,15 +12,18 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "axios": "^0.21.1",
+    "craco-plugin-scoped-css": "^1.1.1",
     "node-sass": "^6.0.1",
     "react": "^17.0.1",
     "react-contexify": "^5.0.0",
     "react-cookie": "^4.1.1",
     "react-dom": "^17.0.1",
+    "react-feather": "^2.0.9",
     "react-icons": "^4.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
     "react-switch": "^6.0.0",
+    "recoil": "^0.7.3-alpha.2",
     "reconnecting-eventsource": "^1.4.0",
     "socket.io-client": "^4.1.2",
     "styled-components": "^5.2.1",
@@ -29,10 +33,10 @@
   },
   "scripts": {
     "preinstall": "npx npm-force-resolutions",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "HTTPS=true SSL_CRT_FILE=public-certificate.pem SSL_KEY_FILE=private-key.pem HOST=0.0.0.0 craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "craco eject"
   },
   "resolutions": {
     "react-error-overlay": "6.0.9"

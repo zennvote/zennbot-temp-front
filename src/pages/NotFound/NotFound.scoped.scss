@@ -1,0 +1,32 @@
+@import '../../assets/color';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  width: 100vw;
+  height: 100vh;
+
+  * {
+    margin: 0 0;
+    padding: 0 0;
+  }
+
+  .button {
+    margin-top: 2rem;
+    padding: 0.5rem;
+
+    outline: none;
+    border: none;
+    background-color: $color-black;
+    color: $color-white;
+    border-radius: 4px;
+
+    text-decoration: none;
+
+    cursor: pointer;
+  }
+}
