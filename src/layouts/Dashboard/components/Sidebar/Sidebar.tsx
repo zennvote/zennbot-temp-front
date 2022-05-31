@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { AlertCircle, Coffee, Music, Settings } from 'react-feather';
 import { NavLink } from 'react-router-dom';
 
-import LogoImage from '../../../assets/logo.png';
+import LogoImage from 'src/assets/logo.png';
 
 import './Sidebar.scoped.scss';
 
