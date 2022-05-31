@@ -1,8 +1,8 @@
 import { FC, useEffect, useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 
-import LogoImage from '../../assets/logo.png';
-import { useAuth } from "../../hooks/useAuth";
+import LogoImage from 'src/assets/logo.png';
+import { useAuth } from 'src/hooks/useAuth';
 
 import './Login.scoped.scss';
 
