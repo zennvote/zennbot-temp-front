@@ -1,0 +1,54 @@
+@import 'styles/color';
+
+h2 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+li {
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  transition: box-shadow 0.2s, background-color 0.2s, transform 0.2s;
+
+  &:hover {
+    background-color: $color-white;
+    box-shadow: 0px 0px 10px #CED9E1;
+    transform: scale(1.02);
+  }
+
+  * {
+    user-select: none;
+  }
+  
+  .index {
+    margin-right: 1rem;
+    width: 14px;
+
+    text-align: center;
+    font-size: 14px;
+    // font-weight: bold;
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .title {
+      font-weight: bold;
+    }
+
+    .requestor {
+      font-size: 12px;
+      color: $color-dark-gray-40;
+    }
+  }
+}
