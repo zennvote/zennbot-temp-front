@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-import './NotFound.scss';
+import './NotFound.scoped.scss';
 
 export const NotFound: FC = () => {
   return (
