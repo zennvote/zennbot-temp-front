@@ -48,7 +48,6 @@ export const Login: FC = () => {
             <input value={username} onChange={(e) => setUsername(e.target.value)} type="text" placeholder="아이디" />
             <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="비밀번호" />
             <button onClick={handleLogin}>로그인</button>
-            <button onClick={() => console.log(isLoggedIn)}>로그인</button>
           </div>
         </div>
       </div>
