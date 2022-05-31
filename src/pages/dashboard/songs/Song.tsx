@@ -4,7 +4,7 @@ import { useSongs } from "src/hooks/useSongs";
 import './Song.scoped.scss';
 
 export const Song: FC = () => {
-  const { addSong } = useSongs();
+  const { addSong, resetSongs, resetCooltimes } = useSongs();
 
   const [addSongTitle, setAddSongTitlte] = useState('');
 
@@ -12,6 +12,9 @@ export const Song: FC = () => {
     addSong(addSongTitle);
     setAddSongTitlte('');
   };
+
+  const handleResetSongs = () => resetSongs()
+  const handleResetCooltime = () => resetCooltimes();
 
   return (
     <div className="root">
@@ -26,6 +29,14 @@ export const Song: FC = () => {
             onKeyPress={(e) => e.key === 'Enter' && handleAddSong()}
           />
           <button onClick={handleAddSong}>추가</button>
+        </div>
+      </div>
+
+      <div className="pane reset-songs">
+        <h2>신청곡 초기화</h2>
+        <div className="buttons">
+          <button onClick={handleResetSongs}>신청곡 초기화</button>
+          <button onClick={handleResetCooltime}>쿨타임 초기화</button>
         </div>
       </div>
     </div>

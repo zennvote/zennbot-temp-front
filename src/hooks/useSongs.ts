@@ -31,10 +31,20 @@ export const useSongs = () => {
     const response = await axios.post(`songs/${title}`);
 
     return new Song(response.data);
-  }
+  };
+
+  const resetSongs = async () => {
+    await axios.post('songs/reset');
+  };
+
+  const resetCooltimes = async () => {
+    await axios.delete('songs/cooltimes');
+  };
 
   return {
     songs,
     addSong,
+    resetSongs,
+    resetCooltimes,
   };
 };
