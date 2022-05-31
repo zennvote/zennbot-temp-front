@@ -1,11 +1,15 @@
 import React, { useEffect } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
+import { useAuth } from 'src/hooks/useAuth';
+
+import { Dashboard } from 'src/layouts/Dashboard/Dashboard';
+
+import { Song } from 'src/pages/dashboard/songs/Song';
+import { Login } from 'src/pages/login/Login';
+import { NotFound } from 'src/pages/NotFound/NotFound';
+
 import './App.css';
-import { useAuth } from './hooks/useAuth';
-import { Dashboard } from './layouts/Dashboard/Dashboard';
-import { Login } from './pages/login/Login';
-import { NotFound } from './pages/NotFound/NotFound';
 
 function App() {
   const { isLoggedIn, isLoggingIn, handleRefreshToken } = useAuth();
@@ -31,7 +35,7 @@ function App() {
               <Route path="/dashboard" exact>
                 <Redirect to='/dashboard/songs' />
               </Route>
-              <Route path="/dashboard/songs">Songs Page</Route>
+              <Route path="/dashboard/songs" component={Song} />
               <Route path="/dashboard/managers">Managers Page</Route>
               <Route path="/dashboard/settings">Settings Page</Route>
               <Route path='*'>
