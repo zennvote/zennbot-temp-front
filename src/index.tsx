@@ -17,6 +17,7 @@ ReactDOM.render(
 
 if (process.env.REACT_APP_API_URL) {
   axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+  axios.defaults.withCredentials = true;
 }
 
 // If you want to start measuring performance in your app, pass a function

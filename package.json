@@ -32,7 +32,7 @@
   },
   "scripts": {
     "preinstall": "npx npm-force-resolutions",
-    "start": "craco start",
+    "start": "HTTPS=true SSL_CRT_FILE=public-certificate.pem SSL_KEY_FILE=private-key.pem HOST=0.0.0.0 craco start",
     "build": "craco build",
     "test": "craco test",
     "eject": "craco eject"

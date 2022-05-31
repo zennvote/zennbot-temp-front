@@ -19,7 +19,6 @@ export const Login: FC = () => {
     } catch {
       setPassword('');
     }
-    
   }
 
   return (
