@@ -28,7 +28,7 @@ export const useSongs = () => {
   };
 
   const addSong = async (title: string) => {
-    const response = await axios.post(`songs/${title}`);
+    const response = await axios.post('songs', { title });
 
     return new Song(response.data);
   };
