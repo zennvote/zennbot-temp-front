@@ -45,11 +45,16 @@ export const useSongs = () => {
     await axios.post('songs/reindex', indexes);
   };
 
+  const deleteSong = async (index: number, isRefund = false) => {
+    await axios.delete(`songs/${index}?${isRefund ? 'refund' : ''}`);
+  }
+
   return {
     songs,
     addSong,
     resetSongs,
     resetCooltimes,
-    reindexSongs
+    reindexSongs,
+    deleteSong,
   };
 };
