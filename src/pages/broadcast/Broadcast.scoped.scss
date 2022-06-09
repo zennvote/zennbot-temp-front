@@ -8,6 +8,7 @@
 }
 
 h2 {
+  font-size: 18px;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
@@ -31,7 +32,7 @@ li {
   }
   
   .index {
-    margin-right: 1rem;
+    margin-right: 1.5rem;
     width: 14px;
 
     text-align: center;
@@ -42,14 +43,15 @@ li {
   .body {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
 
     .title {
+      font-size: 22px;
       font-weight: bold;
     }
 
     .requestor {
-      font-size: 12px;
+      font-size: 14px;
       color: $color-dark-gray-40;
     }
   }
