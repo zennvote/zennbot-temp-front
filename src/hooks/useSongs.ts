@@ -41,10 +41,15 @@ export const useSongs = () => {
     await axios.delete('songs/cooltimes');
   };
 
+  const reindexSongs = async (indexes: number[]) => {
+    await axios.post('songs/reindex', indexes);
+  };
+
   return {
     songs,
     addSong,
     resetSongs,
     resetCooltimes,
+    reindexSongs
   };
 };
