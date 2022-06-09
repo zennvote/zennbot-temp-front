@@ -8,6 +8,7 @@ import { Dashboard } from 'src/layouts/Dashboard/Dashboard';
 import { Song } from 'src/pages/dashboard/songs/Song';
 import { Login } from 'src/pages/login/Login';
 import { NotFound } from 'src/pages/NotFound/NotFound';
+import { Broadcast } from 'src/pages/broadcast/Broadcast';
 
 import './App.css';
 
@@ -22,6 +23,7 @@ function App() {
   return (
     <div className="App">
       <Switch>
+        <Route path='/broadcast' component={Broadcast} exact />
         <Route path="/dashboard">
           <Dashboard>
             <Switch>
