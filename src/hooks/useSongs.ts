@@ -33,6 +33,12 @@ export const useSongs = () => {
     return new Song(response.data);
   };
 
+  const skipSong = async () => {
+    const response = await axios.post('songs/skip');
+
+    return new Song(response.data);
+  };
+
   const resetSongs = async () => {
     await axios.post('songs/reset');
   };
@@ -52,6 +58,7 @@ export const useSongs = () => {
   return {
     songs,
     addSong,
+    skipSong,
     resetSongs,
     resetCooltimes,
     reindexSongs,

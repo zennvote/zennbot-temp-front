@@ -13,10 +13,14 @@ const MENU_ID = 'playlist-context';
 
 type IndexedSong = Song & { index: number };
 export const Playlist: FC = () => {
-  const { songs, reindexSongs, deleteSong } = useSongs();
+  const { songs, reindexSongs, deleteSong, skipSong } = useSongs();
   const indexedSongs = useMemo((): IndexedSong[] => songs.map((song, index): IndexedSong => ({ ...song, index })), [songs]);
 
   const { show } = useContextMenu({ id: MENU_ID });
+
+  const handleClickNext = () => {
+    skipSong();
+  };
 
   const handleContextMenu: React.MouseEventHandler<HTMLLIElement> = (event) => {
     show(event, { props: { index: Number(event.currentTarget.id) } });
@@ -44,7 +48,10 @@ export const Playlist: FC = () => {
 
   return (
     <div className="root">
-      <h2>Playlist</h2>
+      <div className="header">
+        <h2>Playlist</h2>
+        <span className="next" onClick={handleClickNext}>다음 곡 >></span>
+      </div>
 
       <List
         values={indexedSongs}
