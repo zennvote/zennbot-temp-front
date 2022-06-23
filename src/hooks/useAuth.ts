@@ -24,7 +24,7 @@ export const useAuth = () => {
 
   const register = async (username: string, password: string) => {
     const data = { username, password };
-    const response = await axios.post('/user', data);  
+    const response = await axios.post('/users', data);  
     
     return response.data as { id: number, username: string, password: string };
   };
