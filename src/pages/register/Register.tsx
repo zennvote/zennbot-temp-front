@@ -1,4 +1,4 @@
-Rimport { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 
 import LogoImage from 'src/assets/logo.png';
