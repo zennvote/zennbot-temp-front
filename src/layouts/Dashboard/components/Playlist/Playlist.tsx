@@ -50,7 +50,9 @@ export const Playlist: FC = () => {
     <div className="root">
       <div className="header">
         <h2>Playlist</h2>
-        <span className="next" onClick={handleClickNext}>다음 곡 &gt;&gt;</span>
+        <span className="next" onClick={handleClickNext}>
+          다음 곡
+        </span>
       </div>
 
       <List
