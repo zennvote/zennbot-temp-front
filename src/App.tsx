@@ -7,6 +7,7 @@ import { Dashboard } from 'src/layouts/Dashboard/Dashboard';
 
 import { Song } from 'src/pages/dashboard/songs/Song';
 import { Login } from 'src/pages/login/Login';
+import { Register } from './pages/register/Register';
 import { NotFound } from 'src/pages/NotFound/NotFound';
 import { Broadcast } from 'src/pages/broadcast/Broadcast';
 
@@ -47,6 +48,7 @@ function App() {
           </Dashboard>
         </Route>
         <Route path='/login' component={Login} exact />
+        <Route path='/register' component={Register} exact />
         <Route path='*' component={NotFound} />
       </Switch>
     </div>

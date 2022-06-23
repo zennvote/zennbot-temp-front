@@ -21,6 +21,13 @@ export const useAuth = () => {
       throw error;
     }
   };
+
+  const register = async (username: string, password: string) => {
+    const data = { username, password };
+    const response = await axios.post('/user', data);  
+    
+    return response.data as { id: number, username: string, password: string };
+  };
   
   const handleRefreshToken = async () => {
     try {
@@ -50,6 +57,6 @@ export const useAuth = () => {
   };
 
   return {
-    isLoggedIn, isLoggingIn, login, handleRefreshToken
+    isLoggedIn, isLoggingIn, login, register, handleRefreshToken
   }
 };
