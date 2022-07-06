@@ -6,11 +6,14 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import axios from 'axios';
 import { RecoilRoot } from 'recoil';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 if (process.env.REACT_APP_API_URL) {
   axios.defaults.baseURL = process.env.REACT_APP_API_URL;
   axios.defaults.withCredentials = true;
 }
+
+serviceWorkerRegistration.register();
 
 ReactDOM.render(
   <React.StrictMode>
