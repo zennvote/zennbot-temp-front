@@ -28,7 +28,7 @@ export const Song: FC = () => {
             onChange={(e) => setAddSongTitlte(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && handleAddSong()}
           />
-          <button onClick={handleAddSong}>추가</button>
+          <button onClick={handleAddSong}>추가하기</button>
         </div>
       </div>
 

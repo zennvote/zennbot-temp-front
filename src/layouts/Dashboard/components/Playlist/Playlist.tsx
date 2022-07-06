@@ -1,7 +1,7 @@
 import React, { FC, useMemo } from "react";
 import { List, OnChangeMeta } from 'react-movable';
 import { Item, Menu, useContextMenu } from "react-contexify";
-import { Music } from 'react-feather';
+import { FastForward, Music } from 'react-feather';
 
 import { useSongs } from "src/hooks/useSongs";
 import { Song } from "src/models/Song";
@@ -49,10 +49,12 @@ export const Playlist: FC = () => {
   return (
     <div className="root">
       <div className="header">
-        <h2>Playlist</h2>
-        <span className="next" onClick={handleClickNext}>
-          다음 곡
-        </span>
+        <div className="title">
+          <h2>재생 대기열</h2>
+          <span>/ { songs.length }곡</span>
+        </div>
+
+        <FastForward className="next" onClick={handleClickNext} />
       </div>
 
       <List
