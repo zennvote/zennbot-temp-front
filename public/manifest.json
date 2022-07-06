@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "젠프로봇",
+  "name": "젠프로봇 대시보드",
   "icons": [
     {
       "src": "./icons/favicon.ico",
