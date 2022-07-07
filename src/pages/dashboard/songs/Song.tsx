@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import { useSongs } from "src/hooks/useSongs";
+import { CooltimeSongsList } from "./components/CooltimeSongsList";
 
 import './Song.scoped.scss';
 
@@ -38,6 +39,11 @@ export const Song: FC = () => {
           <button onClick={handleResetSongs}>신청곡 초기화</button>
           <button onClick={handleResetCooltime}>쿨타임 초기화</button>
         </div>
+      </div>
+
+      <div className="pane cooltime-list">
+        <h2>현재 쿨타임 곡</h2>
+        <CooltimeSongsList />
       </div>
     </div>
   )
