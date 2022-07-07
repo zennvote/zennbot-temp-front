@@ -1,8 +1,11 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
+import { useSongs } from 'src/hooks/useSongs';
 
 import './CooltimeSongsList.scoped.scss';
 
 export const CooltimeSongsList: FC = () => {
+  const { cooltimeSongs } = useSongs();
+
   return (
     <div className="root">
       <div className="table">
@@ -11,21 +14,15 @@ export const CooltimeSongsList: FC = () => {
           <li className='title'>곡 제목</li>
           <li className='requestor'>신청자</li>
         </ul>
-        <ul className="row">
-          <li className='index'>1</li>
-          <li className='title'>눈동자 속의 시리우스</li>
-          <li className='requestor'>시프트</li>
-        </ul>
-        <ul className="row">
-          <li className='index'>2</li>
-          <li className='title'>랜덤</li>
-          <li className='requestor'>시프트</li>
-        </ul>
-        <ul className="row">
-          <li className='index'>3</li>
-          <li className='title'>래래랜덤</li>
-          <li className='requestor'>스택스는거꾸로해도에임킹</li>
-        </ul>
+        {
+          cooltimeSongs.map((song, index) => (
+            <ul id={`${index}`} className="row">
+              <li className='index'>{ index + 1 }</li>
+              <li className='title'>{ song.title }</li>
+              <li className='requestor'>{ song.requestor }</li>
+            </ul>
+          ))
+        }
       </div>
     </div>
   )
