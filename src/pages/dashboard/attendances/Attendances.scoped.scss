@@ -1,5 +1,9 @@
 @import 'styles/color';
 
+h1 {
+  margin-bottom: 28px;
+}
+
 .table {
   .row {
     display: flex;
@@ -18,15 +22,29 @@
     border-bottom: none;
   }
 
-  .index {
-    width: 24px;
-    font-weight: bold;
-    text-align: center;
+  li {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
-  .title {
+
+  .twitchId {
+    width: 150px;
+  }
+  
+  .username {
+    width: 150px;
+  }
+  
+  .ticketPiece {
+    width: 50px;
+  }
+  
+  .ticket {
+    width: 50px;
+  }
+  
+  .etc {
     flex: 1;
-  }
-  .requestor {
-    width: 200px;
   }
 }

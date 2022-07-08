@@ -12,6 +12,7 @@ import { NotFound } from 'src/pages/NotFound/NotFound';
 import { Broadcast } from 'src/pages/broadcast/Broadcast';
 
 import './App.css';
+import { Attendances } from './pages/dashboard/attendances/Attendances';
 
 function App() {
   const { isLoggedIn, isLoggingIn, handleRefreshToken } = useAuth();
@@ -39,6 +40,7 @@ function App() {
                 <Redirect to='/dashboard/songs' />
               </Route>
               <Route path="/dashboard/songs" component={Song} />
+              <Route path="/dashboard/attendances" component={Attendances} />
               <Route path="/dashboard/managers">Managers Page</Route>
               <Route path="/dashboard/settings">Settings Page</Route>
               <Route path='*'>

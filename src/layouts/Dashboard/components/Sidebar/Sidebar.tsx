@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { AlertCircle, Coffee, Music, Settings } from 'react-feather';
+import { AlertCircle, CheckSquare, Coffee, Music, Settings } from 'react-feather';
 import { NavLink } from 'react-router-dom';
 
 import LogoImage from 'src/assets/logo.png';
@@ -14,6 +14,10 @@ export const Sidebar: FC = () => {
       <div className="button-list max">
         <NavLink to="/dashboard/songs" className={(active) => active ? 'active' : ''}>
           <Music /><span>신청곡 관리</span>
+        </NavLink>
+
+        <NavLink to="/dashboard/attendances" className={(active) => active ? 'active' : ''}>
+          <CheckSquare /><span>출석체크 관리</span>
         </NavLink>
 
         <NavLink to="/dashboard/managers" className={(active) => active ? 'active' : ''}>
