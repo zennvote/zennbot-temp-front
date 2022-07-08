@@ -40,3 +40,65 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: ap-northeast-2
         SOURCE_DIR: build
+
+    - name: Send Success Message
+      env:
+        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        DISCORD_EMBEDS: |
+          [{
+            "title": ":sparkles: Project Deployed! :sparkles:",
+            "fields": [
+              {
+                "name": "Repository",
+                "value": "${{ github.repository }}",
+                "inline": true
+              },
+              {
+                "name": "Branch",
+                "value": "${{ steps.branch-name.outputs.branch }}",
+                "inline": true
+              },
+              {
+                "name": "Version",
+                "value": "${{ github.event.after }}",
+                "inline": false
+              }
+            ],
+            "footer": {
+              "text": "commit by ${{ github.actor }}",
+              "icon_url": "${{ github.event.sender.avatar_url }}"
+            }
+          }]
+      uses: Ilshidur/action-discord@master
+
+    - name: Send Fail Message
+      if: failure()
+      env:
+        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        DISCORD_EMBEDS: |
+          [{
+            "title": ":octagonal_sign: Project Deploy Failed! :octagonal_sign:",
+            "description": "Check it: https://github.com/${{ github.repository }}/actions",
+            "fields": [
+              {
+                "name": "Repository",
+                "value": "${{ github.repository }}",
+                "inline": true
+              },
+              {
+                "name": "Branch",
+                "value": "${{ steps.branch-name.outputs.branch }}",
+                "inline": true
+              },
+              {
+                "name": "Version",
+                "value": "${{ github.event.after }}",
+                "inline": false
+              }
+            ],
+            "footer": {
+              "text": "commit by ${{ github.actor }}",
+              "icon_url": "${{ github.event.sender.avatar_url }}"
+            }
+          }]
+      uses: Ilshidur/action-discord@master
