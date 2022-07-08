@@ -31,15 +31,10 @@ h1 {
   }
   .tier {
     width: 100px;
-    text-align: center;
   }
 
   .header {
     color: $color-dark-gray-30;
     border-bottom: none;
-
-    & > * {
-      text-align: left;
-    }
   }
 }
