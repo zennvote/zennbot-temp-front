@@ -17,11 +17,6 @@ h1 {
     border-bottom: 1px solid $color-dark-gray-20;
   }
 
-  .header {
-    color: $color-dark-gray-30;
-    border-bottom: none;
-  }
-
   li {
     overflow: hidden;
     white-space: nowrap;
@@ -29,22 +24,22 @@ h1 {
   }
 
   .twitchId {
-    width: 150px;
-  }
-  
-  .username {
-    width: 150px;
-  }
-  
-  .ticketPiece {
-    width: 50px;
-  }
-  
-  .ticket {
-    width: 50px;
-  }
-  
-  .etc {
     flex: 1;
+  }
+  .attendedAt {
+    flex: 1;
+  }
+  .tier {
+    width: 100px;
+    text-align: center;
+  }
+
+  .header {
+    color: $color-dark-gray-30;
+    border-bottom: none;
+
+    & > * {
+      text-align: left;
+    }
   }
 }
