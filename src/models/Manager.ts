@@ -1,3 +1,11 @@
+export type ManagerResponse = { id: number, twitchId: string };
+
 export class Manager {
-  constructor(public twitchId: string) {}
+  id: number;
+  twitchId: string;
+
+  constructor(response: ManagerResponse) {
+    this.id = response.id;
+    this.twitchId = response.twitchId;
+  }
 }
