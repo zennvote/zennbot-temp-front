@@ -23,6 +23,10 @@ function App() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  if (isLoggingIn) {
+    return <div className="app" />
+  }
+
   return (
     <div className="App">
       <Switch>
@@ -31,7 +35,7 @@ function App() {
           <Dashboard>
             <Switch>
               {
-                !isLoggingIn && !isLoggedIn && (
+                !isLoggedIn && (
                   <Route path='*'>
                     <Redirect to='/login' />
                   </Route>

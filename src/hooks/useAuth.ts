@@ -43,9 +43,9 @@ export const useAuth = () => {
   const handleLoginSuccess = (response: AxiosResponse) => {
     const { access_token } = response.data;
   
+    axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
     setLoggedIn(true);
     setLoggingIn(false);
-    axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
   
     setTimeout(handleRefreshToken, JwtExpiryTime - 2000);
   };
