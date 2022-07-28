@@ -1,19 +1,22 @@
 import React, { FC, useMemo } from "react";
 import { List, OnChangeMeta } from 'react-movable';
 import { Item, Menu, useContextMenu } from "react-contexify";
-import { FastForward, Music } from 'react-feather';
+import { Bell, ChevronUp, FastForward, Music, Twitch } from 'react-feather';
 
 import { useSongs } from "src/hooks/useSongs";
 import { Song } from "src/models/Song";
 
 import "react-contexify/dist/ReactContexify.css";
 import './Playlist.scoped.scss';
+import { useSettings } from "src/hooks/useSettings";
 
 const MENU_ID = 'playlist-context';
 
 type IndexedSong = Song & { index: number };
 export const Playlist: FC = () => {
   const { songs, reindexSongs, deleteSong, skipSong } = useSongs();
+  const { setting: isRequestEnabled, update: setRequestEnabled } = useSettings('request-enabled');
+  const { setting: isGoldenBell, update: setGoldenBell } = useSettings('goldenbell-enabled');
   const indexedSongs = useMemo((): IndexedSong[] => songs.map((song, index): IndexedSong => ({ ...song, index })), [songs]);
 
   const { show } = useContextMenu({ id: MENU_ID });
@@ -79,6 +82,20 @@ export const Playlist: FC = () => {
           </li>
         )}
       />
+
+      <div className="controller">
+        {/* <ChevronUp className="collapse" /> */}
+        <div className="buttons">
+          <Music
+            className={isRequestEnabled?.value ? 'on' : ''}
+            onClick={() => setRequestEnabled(!isRequestEnabled?.value)}
+          />
+          <Bell
+            className={isGoldenBell?.value ? 'on' : ''}
+            onClick={() => setGoldenBell(!isGoldenBell?.value)}
+          />
+        </div>
+      </div>
 
       <Menu id={MENU_ID}>
         <Item onClick={({ props: { index } }) => handleClickSongDelete(index)}>
