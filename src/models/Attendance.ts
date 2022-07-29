@@ -16,13 +16,14 @@ export class Attendance {
   }
 
   get attendedAtString() {
-    const year = `${this.attendedAt?.getFullYear()}`.padStart(4, '0');
-    const month = `${this.attendedAt?.getMonth()}`.padStart(2, '0');
-    const date = `${this.attendedAt?.getDate()}`.padStart(2, '0');
-    const hours = `${this.attendedAt?.getHours()}`.padStart(2, '0');
-    const minutes = `${this.attendedAt?.getMinutes()}`.padStart(2, '0');
-    const seconds = `${this.attendedAt?.getSeconds()}`.padStart(2, '0');
+    const year = this.attendedAt?.getFullYear();
+    const month = this.attendedAt?.getMonth() + 1;
+    const date = this.attendedAt?.getDate();
+    const hours = this.attendedAt?.getHours();
+    const hourOf12 = hours > 12 ? hours - 12 : hours;
+    const minutes = this.attendedAt?.getMinutes();
+    const amstring = hours > 12 ? '오후' : '오전';
 
-    return `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`;
+    return `${year}년 ${month}월 ${date}일 ${amstring} ${hourOf12}시 ${minutes}분`;
   }
 }
