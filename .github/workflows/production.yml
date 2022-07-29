@@ -33,7 +33,7 @@ jobs:
       run: yarn install
 
     - name: build
-      run: yarn build
+      run: yarn prod
 
     - name: Deploy to S3
       uses: jakejarvis/s3-sync-action@master
