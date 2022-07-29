@@ -1,40 +1,48 @@
-@import 'styles/color';
+@import "styles/color";
 
 h1 {
   margin-bottom: 28px;
 }
 
-.table {
-  .row {
+.topbar {
+  display: flex;
+  height: 32px;
+  align-items: center;
+  margin-bottom: 12px;
+
+  .navigator {
     display: flex;
-    align-items: center;
-    gap: 20px;
+    gap: 8px;
 
-    width: 100%;
-    height: 44px;
-    padding: 10px 0;
+    svg {
+      cursor: pointer;
+      user-select: none;
+    }
 
-    border-bottom: 1px solid $color-dark-gray-20;
+    button {
+      padding: 0 12px;
+
+      border-radius: 4px;
+      background-color: $color-main;
+      outline: none;
+      border: none;
+
+      color: $color-white;
+
+      cursor: pointer;
+      user-select: none;
+
+      &:active {
+        box-shadow: inset 0px 0px 10px rgba(100, 65, 164, 0.5);
+      }
+    }
   }
 
-  li {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-
-  .twitchId {
+  h2 {
     flex: 1;
   }
-  .attendedAt {
-    flex: 1;
-  }
-  .tier {
-    width: 100px;
-  }
+}
 
-  .header {
-    color: $color-dark-gray-30;
-    border-bottom: none;
-  }
+.dates {
+  border-top: 2px solid $color-dark-gray-30;
 }
