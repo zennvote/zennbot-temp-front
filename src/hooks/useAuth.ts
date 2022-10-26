@@ -30,8 +30,9 @@ export const useAuth = () => {
   };
   
   const handleRefreshToken = async () => {
+    if (!isLoggedIn) setLoggingIn(true);
+
     try {
-      setLoggingIn(true);
       const response = await axios.post('/auth/refresh');
       handleLoginSuccess(response);
     } catch (error) {
@@ -44,8 +45,10 @@ export const useAuth = () => {
     const { access_token } = response.data;
   
     axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
-    setLoggedIn(true);
-    setLoggingIn(false);
+    if (!isLoggedIn) {
+      setLoggedIn(true);
+      setLoggingIn(false);
+    }
   
     setTimeout(handleRefreshToken, JwtExpiryTime - 2000);
   };

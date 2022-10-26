@@ -24,7 +24,11 @@ function App() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (isLoggingIn) {
+  useEffect(() => {
+    console.log(isLoggedIn, isLoggedIn);
+  }, [isLoggingIn, isLoggedIn]);
+
+  if (isLoggingIn && !isLoggedIn) {
     return <div className="app" />
   }
 
