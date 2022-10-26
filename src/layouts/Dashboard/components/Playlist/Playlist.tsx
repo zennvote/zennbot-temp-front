@@ -1,7 +1,7 @@
 import React, { FC, useMemo } from "react";
 import { List, OnChangeMeta } from 'react-movable';
 import { Item, Menu, useContextMenu } from "react-contexify";
-import { Bell, ChevronUp, FastForward, Music, Twitch } from 'react-feather';
+import { Bell, FastForward, Music } from 'react-feather';
 
 import { useSongs } from "src/hooks/useSongs";
 import { Song } from "src/models/Song";
