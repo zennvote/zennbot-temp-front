@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react';
+import { useRouteMatch } from 'react-router-dom';
 import { Playlist } from './components/Playlist/Playlist';
 
 import { Sidebar } from './components/Sidebar/Sidebar';
@@ -7,6 +8,7 @@ import './Dashboard.scoped.scss';
 
 export const Dashboard: FC = ({ children }) => {
   const [playlistCollapsed, setPlaylistCollapsed] = useState<boolean>(false);
+  const idolsMatch = useRouteMatch('/dashboard/idols');
 
   return (
     <div className='dashboard-root'>
@@ -20,7 +22,7 @@ export const Dashboard: FC = ({ children }) => {
         </div>
       </div>
 
-      <div className={`playlist ${playlistCollapsed && 'collapsed'}`}>
+      <div className={`playlist ${(playlistCollapsed || idolsMatch?.isExact) && 'collapsed'}`}>
         <div className="collapser" onClick={() => setPlaylistCollapsed(!playlistCollapsed)} />
         <Playlist />
       </div>

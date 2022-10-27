@@ -1,0 +1,130 @@
+@import "styles/color";
+
+h1 {
+  margin-bottom: 12px;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  position: sticky;
+  background-color: white;
+  top: -50px;
+  height: 62px;
+  margin-bottom: 12px;
+
+  input {
+    height: 30px;
+    width: 100%;
+    flex: 1;
+    border: none;
+    outline: none;
+    border-bottom: 1px $color-dark-gray-30 solid;
+    font-size: 16px;
+
+    &:focus, &:active {
+      border-bottom: 1px $color-main solid;
+    }
+  }
+}
+
+.table {
+  margin-bottom: 24px;
+  .row {
+    display: flex;
+    align-items: start;
+    gap: 10px;
+  }
+
+  .rowgroup {
+    width: 100%;
+    padding: 12px 0;
+
+    border-bottom: 1px solid $color-dark-gray-20;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    min-height: 24px;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
+  .header {
+    position: sticky;
+    background-color: white;
+    top: 12px;
+
+    border-bottom: 1px solid $color-dark-gray-20;
+    color: $color-dark-gray-30;
+    font-size: 14px;
+    padding: 0;
+    height: 30px;
+  }
+
+  .id {
+    justify-content: center;
+    font-weight: 700;
+    flex-basis: 32px;
+  }
+  .name {
+    font-weight: 500;
+    flex-basis: 138px;
+  }
+  .company {
+    flex-basis: 48px;
+  }
+  .unit {
+    flex: 2;
+    flex-basis: 48px;
+  }
+  .type {
+    justify-content: center;
+    max-width: 80px;
+    flex: 1;
+    flex-basis: 40px;
+  }
+  .birthday {
+    justify-content: center;
+    max-width: 100px;
+    flex: 1;
+    flex-basis: 70px;
+  }
+  .age {
+    justify-content: center;
+    max-width: 36px;
+    flex: 1;
+    flex-basis: 28px;
+  }
+  .height {
+    justify-content: center;
+    max-width: 36px;
+    flex: 1;
+    flex-basis: 32px;
+  }
+  .weight {
+    justify-content: center;
+    max-width: 64px;
+    flex: 1;
+    flex-basis: 28px;
+  }
+  .threeSize {
+    justify-content: center;
+    max-width: 124px;
+    flex: 1;
+    flex-basis: 72px;
+  }
+  .hometown {
+    flex: 0.5;
+    flex-basis: 72px;
+  }
+  .cv {
+    flex: 2;
+  }
+  .introduction {
+    margin-top: 4px;
+    font-size: 14px;
+    color: $color-dark-gray-40;
+  }
+}

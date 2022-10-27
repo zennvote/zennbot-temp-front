@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { AlertCircle, CheckSquare, Coffee, DollarSign, Music, Settings } from 'react-feather';
+import { AlertCircle, CheckSquare, Coffee, DollarSign, Mic, Music, Settings } from 'react-feather';
 import { NavLink } from 'react-router-dom';
 
 import LogoImage from 'src/assets/logo.png';
@@ -26,6 +26,10 @@ export const Sidebar: FC = () => {
 
         <NavLink to="/dashboard/accounts" className={(active) => active ? 'active' : ''}>
           <DollarSign /><span>포인트 관리</span>
+        </NavLink>
+
+        <NavLink to="/dashboard/idols" className={(active) => active ? 'active' : ''}>
+          <Mic /><span>아이돌 목록</span>
         </NavLink>
 
         <NavLink to="/dashboard/settings" className={(active) => active ? 'active' : ''}>

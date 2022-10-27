@@ -15,6 +15,7 @@ import './App.css';
 import { Attendances } from './pages/dashboard/attendances/Attendances';
 import { Managers } from './pages/dashboard/managers/Managers';
 import { Accounts } from './pages/dashboard/accounts/Accounts';
+import { Idols } from './pages/dashboard/idols/Idols';
 
 function App() {
   const { isLoggedIn, isLoggingIn, handleRefreshToken } = useAuth();
@@ -49,6 +50,7 @@ function App() {
               <Route path="/dashboard/attendances" component={Attendances} />
               <Route path="/dashboard/managers" component={Managers} />
               <Route path="/dashboard/accounts" component={Accounts} />
+              <Route path="/dashboard/idols" component={Idols} />
               <Route path="/dashboard/settings">Settings Page</Route>
               <Route path='*'>
                 <Redirect to='/not-found' />
