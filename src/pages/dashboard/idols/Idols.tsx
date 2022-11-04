@@ -1,7 +1,9 @@
 import { FC, useMemo, useState } from "react";
 import { useIdols } from "src/hooks/useIdols";
+import { Menu } from '@headlessui/react';
+import { Heart, MoreHorizontal } from "react-feather";
 
-import './Idols.scoped.scss';
+import './Idols.scss';
 
 export const Idols: FC = () => {
   const { idols } = useIdols();
@@ -43,6 +45,7 @@ export const Idols: FC = () => {
               <li className="threeSize">3사이즈</li>
               <li className="hometown">출신지</li>
               <li className="cv">성우</li>
+              <li className="menu"></li>
             </ul>
             {
               filteredIdols.map((idol) => (
@@ -60,6 +63,16 @@ export const Idols: FC = () => {
                     <li className="threeSize">{ idol.threeSize }</li>
                     <li className="hometown">{ idol.hometown }</li>
                     <li className="cv">{ idol.cv }</li>
+                    <Menu as="li" className="menu">
+                      <Menu.Button className="menu-button" as="div">
+                        <MoreHorizontal size={16} />
+                      </Menu.Button>
+                      <Menu.Items className={"menu-items"}>
+                        <Menu.Item className={"menu-item"} as='div'>
+                          <Heart size={20} strokeWidth={2} /> 담당 프로듀서 추가
+                        </Menu.Item>
+                      </Menu.Items>
+                    </Menu>
                   </ul>
                   <ul className="row">
                     <li className="id"></li>

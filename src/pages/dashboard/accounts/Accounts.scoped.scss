@@ -29,7 +29,7 @@ h1 {
 .table {
   .row {
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     gap: 20px;
 
     width: 100%;
@@ -64,6 +64,11 @@ h1 {
   }
   .prefix {
     flex: 1;
+  }
+  .button {
+    width: 24px;
+    color: $color-dark-gray-40;
+    cursor: pointer;
   }
 
   .header {

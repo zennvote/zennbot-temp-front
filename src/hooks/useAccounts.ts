@@ -9,7 +9,7 @@ const fetcher = async (key: string) => {
 }
 
 export const useAccounts = () => {
-  const { data, error } = useSWR("viewers", fetcher);
+  const { data, error, mutate } = useSWR("viewers", fetcher);
 
-  return { accounts: data, error };
+  return { accounts: data, error, mutate };
 };

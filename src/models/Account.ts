@@ -5,6 +5,7 @@ export type AccountResponse = {
   ticket: number,
   ticketPiece: number,
   prefix?: string,
+  viasIdolIds?: number[],
 };
 
 export class Account {
@@ -14,6 +15,7 @@ export class Account {
   ticket: number;
   ticketPiece: number;
   prefix?: string;
+  biasIdolIds: number[];
 
   constructor(response: AccountResponse) {
     this.index = response.index;
@@ -22,5 +24,6 @@ export class Account {
     this.ticket = response.ticket;
     this.ticketPiece = response.ticketPiece;
     this.prefix = response.prefix;
+    this.biasIdolIds = response.viasIdolIds ?? [];
   }
 }

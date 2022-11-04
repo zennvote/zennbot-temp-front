@@ -1,0 +1,107 @@
+@import "styles/color";
+
+.dialog {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  padding: 0 16px;
+  background-color: rgba(black, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-panel {
+    padding: 24px;
+    border-radius: 16px;
+    background-color: white;
+    max-width: 42rem;
+    width: 100%;
+
+    h3 {
+      margin-bottom: 4px;
+    }
+
+    .desc {
+      margin-bottom: 16px;
+      font-size: 14px;
+      color: $color-dark-gray-40;
+    }
+
+    .account-search {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      margin-bottom: 12px;
+    
+      input {
+        height: 30px;
+        width: 100%;
+        flex: 1;
+        border: none;
+        outline: none;
+        border-bottom: 1px $color-dark-gray-30 solid;
+        font-size: 16px;
+    
+        &:focus, &:active {
+          border-bottom: 1px $color-main solid;
+        }
+      }
+    }
+
+    .account-result {
+      height: 300px;
+      overflow: scroll;
+      border-top: 1px solid $color-dark-gray-20;
+      border-bottom: 1px solid $color-dark-gray-20;
+
+      &.no-result {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      & > .no-result {
+        font-size: 18px;
+        font-weight: 500;
+      }
+
+      &-item {
+        display: flex;
+        align-items: center;
+        height: 36px;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid $color-dark-gray-20;
+        }
+      }
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      height: 34px;
+      margin-top: 16px;
+
+      button {
+        padding: 0 12px;
+
+        border-radius: 4px;
+        background-color: $color-main;
+        outline: none;
+        border: none;
+
+        font-weight: bold;
+        color: $color-white;
+
+        cursor: pointer;
+
+        &:active {
+          box-shadow: inset 0px 0px 10px rgba(100, 65, 164, 0.5);
+        }
+      }
+    }
+  }
+}
