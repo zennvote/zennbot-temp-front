@@ -5,7 +5,6 @@ import { useIdols } from "src/hooks/useIdols";
 import './AddBiasModal.scss';
 import { Account, AccountResponse } from "src/models/Account";
 import axios from "axios";
-import { FormControlLabel, Checkbox } from "@mui/material";
 import { useAccounts } from "src/hooks/useAccounts";
 import { PlusCircle, MinusCircle } from 'react-feather';
 
