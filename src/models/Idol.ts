@@ -1,5 +1,5 @@
 export type IdolResponse = {
-  id: number;
+  id: string;
   firstName?: string;
   lastName: string;
   company?: string;
@@ -16,7 +16,7 @@ export type IdolResponse = {
 }
 
 export class Idol {
-  public id!: number;
+  public id!: string;
   public firstName?: string;
   public lastName!: string;
   public company?: string;
@@ -46,6 +46,10 @@ export class Idol {
     this.hometown = response.hometown;
     this.cv = response.cv;
     this.introduction = response.introduction;
+  }
+
+  get displayId() {
+    return parseInt(this.id, 10) + 1;
   }
 
   get fullName() {

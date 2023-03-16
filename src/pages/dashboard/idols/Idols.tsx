@@ -51,7 +51,7 @@ export const Idols: FC = () => {
               filteredIdols.map((idol) => (
                 <ul className="rowgroup">
                   <ul className="row">
-                    <li className="id">{ idol.id + 1 }</li>
+                    <li className="id">{ idol.displayId }</li>
                     <li className="name">{ idol.fullName }</li>
                     <li className="company">{ idol.company }</li>
                     <li className="unit">{ idol.unit }</li>
