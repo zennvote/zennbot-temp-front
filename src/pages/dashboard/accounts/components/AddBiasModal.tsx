@@ -18,7 +18,7 @@ export const AddBiasModal: FC<Props> = ({ username, onClose }) => {
 
   const [isOpen, setIsOpen] = useState(true);
   const [filter, setFilter] = useState('');
-  const [selected, select] = useState<number[]>([]);
+  const [selected, select] = useState<string[]>([]);
   const [isClosable, setIsClosable] = useState(true);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export const AddBiasModal: FC<Props> = ({ username, onClose }) => {
     ));
   }, [filter, idols]);
 
-  const handleSelectIdol = (id: number) => {
+  const handleSelectIdol = (id: string) => {
     if (selected.includes(id)) {
       select(selected.filter((finding) => finding !== id));
     } else {
